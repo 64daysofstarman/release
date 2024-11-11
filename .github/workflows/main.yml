@@ -1,5 +1,14 @@
-- uses: robinraju/release-downloader@v1
-  with:
-    repository: 'owner/Pixelsuft/em-xash'
-    latest: true
-    fileName: '**/*'
+name: Release Downloader
+
+on:
+  # Add a trigger event, such as "push" or "schedule"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: robinraju/release-downloader@v1
+        with:
+          repository: 'owner/Pixelsuft/em-xash'
+          latest: true
+          fileName: '*'
