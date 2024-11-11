@@ -1,5 +1,5 @@
-uses: robinraju/release-downloader@v1
+- uses: robinraju/release-downloader@v1
   with:
     repository: 'owner/Pixelsuft/em-xash'
     latest: true
-    fileName: '*'
+    fileName: '**/*'
