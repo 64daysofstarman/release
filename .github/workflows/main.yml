@@ -1,16 +1,26 @@
-name: Release Downloader
+name: Download All Releases as Artifact
 
 on:
-  # Add a trigger event, such as "push" or "schedule"
+  push:
+    tags:
+      - 'v*'
 
 jobs:
-  build:
+  download-releases:
     runs-on: ubuntu-latest
     steps:
-      - name: release-downloader
-        uses: robinraju/release-downloader@v1.11
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Download all releases
+        uses: robinraju/release-downloader@v1
         with:
-          repository: Pixelsuft/em-xash
-          latest: true
-          fileName: '*'
-          #... other optional inputs...
+          repository: 'owner/repo'
+          all: true
+          directory: './releases'
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: releases
+          path:./releases
